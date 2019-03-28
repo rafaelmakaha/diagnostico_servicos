@@ -10,12 +10,12 @@
 #
 # data = {}
 #
-# HOST = "https://api.surveymonkey.net"
-# # SURVEY_LIST_ENDPOINT = '/v3/surveys/168829664/responses/10564608343'
-# # SURVEY_LIST_ENDPOINT = '/v3/surveys/168829664/pages'
-# SURVEY_LIST_ENDPOINT = '/v3/surveys/168829664/details'
-# # SURVEY_LIST_ENDPOINT = "/v3/surveys/168829664/responses/bulk"
-# # SURVEY_LIST_ENDPOINT = '/v3/surveys/168829664/responses/10579548780/details'
+# HOST = "https://api.surveymonkey.net" #MINFRA 166556535   #ME 168829664
+# # SURVEY_LIST_ENDPOINT = '/v3/surveys/166556535/responses/10564608343'
+# # SURVEY_LIST_ENDPOINT = '/v3/surveys/166556535/pages'
+# # SURVEY_LIST_ENDPOINT = '/v3/surveys/166556535/details'
+# SURVEY_LIST_ENDPOINT = "/v3/surveys/166556535/responses/bulk"
+# # SURVEY_LIST_ENDPOINT = '/v3/surveys/166556535/responses/10579548780/details'
 #
 # ''
 #
@@ -51,14 +51,14 @@
 #
 # response_json = response.json()
 # #survey_list = response_json["data"]["surveys"]
-#
+# print(response_json)
 # print(response_json)
 import csv
 
 from jsonpath_rw import jsonpath, parse
-from data import data_test, data_test2, data_novo52
-from mapping_surveymonkey import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other
-from questions import question_list52
+from data import data_minfra, data_novo52
+from mapping_me import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other
+from questions import question_me52, question_minfra
 
 
 def remove_html_tags(text):
@@ -216,11 +216,11 @@ def parse_answers(page, questions, ano):
 
 jsonpath_expr = parse('data[*].pages')
 question_expr = parse('pages[*].questions')
-questions = [match.value for match in question_expr.find(question_list52)]
+questions = [match.value for match in question_expr.find(question_minfra)]
 dataset = []
 first = True
 
-input = data_novo52
+input = data_minfra
 ano = input['data'][0]['date_modified'].split('-')[0]
 
 for match in jsonpath_expr.find(input):
