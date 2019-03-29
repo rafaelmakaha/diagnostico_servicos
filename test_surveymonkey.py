@@ -110,10 +110,11 @@ def parse_answers(page, questions, ano):
 
     for c in columns_categoric_copy:
         choices_id = recursive_find(page, c['id'], 'id')
+        choices = []
+
         if choices_id:
             choices_id = choices_id['answers'] #[0]['choice_id']
 
-            choices = []
             for i in choices_id:
                 if 'choice_id' in i:
                     choice = recursive_find(questions, i['choice_id'], 'id')['text']

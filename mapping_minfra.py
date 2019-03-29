@@ -6,20 +6,20 @@ columns_simple = [{"id": '220161939', 'column': 'qtd_servicos'}, ## OK
                   {"id": '220161943', 'column': 'normas'}, ## OK
                   {"id": '220161949', 'column': 'volume_anual'}, ## OK
                   {"id": '220161918', 'column': 'qtd_areas_envolvidas'}, ##OK
-                  {"id": '241286635', 'column': 'qtd_dias_espera'},
-                  {"id": '241286636', 'column': 'qtd_interacoes'},
+                  {"id": '220161941', 'column': 'qtd_dias_espera'},##OK
+                  {"id": '220161942', 'column': 'qtd_interacoes'},##OK
                   {"id": '220161957', 'column': 'qtd_pessoas_implantacao'}, ## OK
                   {"id": '220161958', 'column': 'tempo_pessoas_implantacao'}] ## OK
 
 columns_categoric = [
-                    {"id": '241301514', 'column': 'organizacao'},
-                    {"id": '241286634', 'column': 'nome_servico'},
+                    #{"id": '241301514', 'column': 'organizacao'},
+                    #{"id": '241286634', 'column': 'nome_servico'},
                     {"id": '220161945', 'column': 'tipo_usuario'}, ## OK
                     {"id": '220161961', 'column': 'forma_prestacao'}, ## OK
                     {"id": '220161915', 'column': 'sn_medicao_tempo_entrega'}, #OK
-                    {"id": '241286611', 'column': 'canais_oferecidos'},
-                    {"id": '241286640', 'column': 'sn_processo_aval_qualidade'},
-                    {"id": '241286612', 'column': 'sn_usa_reclamacoes'},
+                    {"id": '220161916', 'column': 'canais_oferecidos'}, #OK
+                    {"id": '220161948', 'column': 'sn_processo_aval_qualidade'},#OK
+                    {"id": '220161917', 'column': 'sn_usa_reclamacoes'},#OK
                     {"id": '220161919', 'column': 'sn_capacitacao_colaboradores'}, ## OK
                     {"id": '220161920', 'column': 'sn_incentivo_colaboradores'}, ## OK
                     {"id": '220161922', 'column': 'custo_instituicao'}, ## OK
@@ -29,13 +29,13 @@ columns_categoric = [
                     {"id": '220161951', 'column': 'renda_mensal_usuario'}, ## OK
                     {"id": '220161952', 'column': 'representante_pj'}, ## OK
                     {"id": '220161963', 'column': 'sn_cadastro_solicitacoes'}, ## OK
-                    {"id": '241286623', 'column': 'sn_servico_plano_estrategico'},
-                    {"id": '241286624', 'column': 'sn_modelo_gestao_qualidade'},
-                    {"id": '241286626', 'column': 'sn_avaliacao_qualidade_regular'},
-                    {"id": '241286627', 'column': 'sn_pessoas_exclusiv_qualidade'},
-                    {"id": '241286628', 'column': 'sn_ferramenta_aval_satisfacao'},
-                    {"id": '241286629', 'column': 'sn_usuarios_envolv_melhoria'},
-                    {"id": '241286631', 'column': 'sn_colaboracao_instituicoes'}]
+                    {"id": '220161928', 'column': 'sn_servico_plano_estrategico'}, ##OK
+                    {"id": '220161929', 'column': 'sn_modelo_gestao_qualidade'}, ##OK
+                    {"id": '220161931', 'column': 'sn_avaliacao_qualidade_regular'}, ##OK
+                    {"id": '220161932', 'column': 'sn_pessoas_exclusiv_qualidade'},##OK
+                    {"id": '220161933', 'column': 'sn_ferramenta_aval_satisfacao'},##OK
+                    {"id": '220161934', 'column': 'sn_usuarios_envolv_melhoria'}, ##OK
+                    {"id": '220161936', 'column': 'sn_colaboracao_instituicoes'}] ##OK
 
 columns_multiple = [
             {"id": '241010906', 'sub_id': '1644586885', 'column': 'rat_buscainf_presencial_antes'}, ##OK
@@ -73,12 +73,12 @@ columns_multiple = [
             {"id": '220161925', 'sub_id': '1511913398', 'column': 'acessibilidade_sistema'}, ## OK
             {"id": '220161926', 'sub_id': '1511913201', 'column': 'reduzir_qtd_documentos'}, ##OK
             {"id": '220161926', 'sub_id': '1511913202', 'column': 'divulgacao_desempenho'},##OK
-            {"id": '241286625', 'sub_id': '1646382833', 'column': 'ad_missao_servicos'},
-            {"id": '241286625', 'sub_id': '1646382834', 'column': 'ad_monitora_qualidade'},
-            {"id": '241286625', 'sub_id': '1646382835', 'column': 'ad_divulga_servicos'},
-            {"id": '241286625', 'sub_id': '1646382836', 'column': 'ad_melhoria_processos'},
-            {"id": '241286630', 'sub_id': '1646382849', 'column': 'estrategia_divulgacao_efetiva'},
-            {"id": '241286632', 'sub_id': '1646382856', 'column': 'proatividade_divulgacao_informacoes'},
+            {"id": '220161930', 'sub_id': '1511913213', 'column': 'ad_missao_servicos'},##OK
+            {"id": '220161930', 'sub_id': '1511913214', 'column': 'ad_monitora_qualidade'},##OK
+            {"id": '220161930', 'sub_id': '1511913215', 'column': 'ad_divulga_servicos'},##OK
+            {"id": '220161930', 'sub_id': '1511913216', 'column': 'ad_melhoria_processos'},##OK
+            {"id": '220161935', 'sub_id': '1511913229', 'column': 'estrategia_divulgacao_efetiva'}, ##OK
+            {"id": '220161937', 'sub_id': '1511913236', 'column': 'proatividade_divulgacao_informacoes'},##OK
             {"id": '220161962', 'sub_id': '1511913745', 'column': 'sistema_etapas_solicitacao'}, ##OK
             {"id": '220161962', 'sub_id': '1511913746', 'column': 'sistema_etapas_analise'}, ##OK
             {"id": '220161962', 'sub_id': '1511913747', 'column': 'sistema_etapas_entrega'}, ##OK
@@ -89,18 +89,18 @@ columns_matrix = [
     {"id": '220161959', 'row_id': '1511913707', 'col_id': '1581604351', 'column': 'rat_solicitacao_antes_digital'}, ##OK
     {"id": '220161959', 'row_id': '1581604328', 'col_id': '1581604351', 'column': 'rat_solicitacao_antes_postal'}, ##OK
     {"id": '220161959', 'row_id': '1581604329', 'col_id': '1581604351', 'column': 'rat_solicitacao_antes_telefone'}, ## OK
-    {"id": '241286649', 'row_id': '1646383470', 'col_id': '1646383558', 'column': 'rat_entrega_antes_presencial'},
-    {"id": '241286649', 'row_id': '1646383471', 'col_id': '1646383558', 'column': 'rat_entrega_antes_digital'},
-    {"id": '241286649', 'row_id': '1646383530', 'col_id': '1646383558', 'column': 'rat_entrega_antes_postal'},
-    {"id": '241286649', 'row_id': '1646383531', 'col_id': '1646383558', 'column': 'rat_entrega_antes_telefone'},
-    {"id": None, 'row_id': '1646383623', 'col_id': '1646383654', 'column': 'rat_entrega_depois_presencial'}, ## NONE
-    {"id": '220161953', 'row_id': '1511913710', 'col_id': '1581646209', 'column': 'rat_entrega_depois_digital'}, ## OK
-    {"id": None, 'row_id': '1646383626', 'col_id': '1646383654', 'column': 'rat_entrega_depois_postal'}, ##NONE
-    {"id": None, 'row_id': '1646383627', 'col_id': '1646383654', 'column': 'rat_entrega_depois_telefone'}, ##NONE
-    {"id": None, 'row_id': '1646383623', 'col_id': '1646383631', 'column': 'rat_solicitacao_depois_presencial'}, ##NONE
-    {"id": '220161953', 'row_id': '1511913709', 'col_id': '1581646209', 'column': 'rat_solicitacao_depois_digital'}, ## OK
-    {"id": None, 'row_id': '1646383626', 'col_id': '1646383631', 'column': 'rat_solicitacao_depois_postal'}, ##NONE
-    {"id": None, 'row_id': '1646383627', 'col_id': '1646383631', 'column': 'rat_solicitacao_depois_telefone'},##NONE
+    {"id": '220161959', 'row_id': '1511913706', 'col_id': '1581604378', 'column': 'rat_entrega_antes_presencial'},## OK
+    {"id": '220161959', 'row_id': '1511913707', 'col_id': '1581604378', 'column': 'rat_entrega_antes_digital'},## OK
+    {"id": '220161959', 'row_id': '1581604328', 'col_id': '1581604378', 'column': 'rat_entrega_antes_postal'},## OK
+    {"id": '220161959', 'row_id': '1581604329', 'col_id': '1581604378', 'column': 'rat_entrega_antes_telefone'},## OK
+    {"id": '241002894', 'row_id': '1644533037', 'col_id': '1644533068', 'column': 'rat_entrega_depois_presencial'}, ## OK
+    {"id": '241002894', 'row_id': '1644533038', 'col_id': '1644533068', 'column': 'rat_entrega_depois_digital'}, ## OK
+    {"id": '241002894', 'row_id': '1644533040', 'col_id': '1644533068', 'column': 'rat_entrega_depois_postal'}, ## OK
+    {"id": '241002894', 'row_id': '1644533041', 'col_id': '1644533068', 'column': 'rat_entrega_depois_telefone'}, ## OK
+    {"id": '241002894', 'row_id': '1644533037', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_presencial'},## OK
+    {"id": '241002894', 'row_id': '1644533038', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_digital'}, ## OK
+    {"id": '241002894', 'row_id': '1644533040', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_postal'}, ## OK
+    {"id": '241002894', 'row_id': '1644533041', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_telefone'},## OK
     {'id': '220161954', "row_id": '1581480806', 'col_id': '1581480808', 'column': 'qtd_servidores_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480806', 'col_id': '1582860212', 'column': 'percentual_servidores_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480807', 'col_id': '1581480808', 'column': 'qtd_terceirizados_antes'}, ## OK
@@ -115,19 +115,20 @@ columns_matrix = [
 
 
 columns_other = [
-    {"id": '1646383625', 'column': 'nome_servico_outro'},
-    {"id": '1644586887', 'column': 'canais_oferecidos_outro'}, ##OK
-    {"id": '1646383472', 'column': 'rat_utilizacao_antes_outro'},
-    {"id": '1646383625', 'column': 'rat_utilizacao_depois_outro'},
+    {"id": '1538043547', 'column': 'nome_servico_outro'}, ##OK
+    {"id": '1511913391', 'column': 'canais_oferecidos_outro'}, ##OK
+    {"id": '1511913708', 'column': 'rat_utilizacao_antes_outro'},##OK
+    {"id": '1644533039', 'column': 'rat_utilizacao_depois_outro'},##OK
     {"id": '1511913454', 'column': 'representante_pj_outro'}, ## OK
     {"id": '1511913439', 'column': 'doc_necessarios_outro'}, ## OK
-    {"id": '1646383005', 'column': 'alteracoes_custos_usuario_outro'},
     {"id": '1582971570', 'column': 'acoes_internet_outro'}, ## OK
     {"id": '1644654377', 'column': 'adequabilidade_sistemas'}, ## OK
-    {"id": '1581701712', 'column': 'melhorias_servico_outro'},
-    {"id": '1646382988', 'column': 'colaboracao_instituicoes_outro'},
+    {"id": '1581701712', 'column': 'melhorias_servico_outro'}, ## OK
+    {"id": '1511913443', 'column': 'colaboracao_instituicoes_outro'}, ##OK
                  ]
 #
+columns_nomes = [
+    {"id": '1646383625', 'column': 'nome_servico_outro', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'}]
 # columns_simple = [
 #                     {'question': 'Quantos serviços você coordena?', 'column': 'qtd_servicos', 'id': '241294964'},
 #                     {'question': 'Qual é o seu nome?', 'column': 'respondente_nome', 'id': '241286639'},

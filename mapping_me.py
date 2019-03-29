@@ -115,7 +115,6 @@ columns_other = [
     {"id": '1646383625', 'column': 'rat_utilizacao_depois_outro'},
     {"id": '1646382999', 'column': 'representante_pj_outro'},
     {"id": '1646382985', 'column': 'doc_necessarios_outro'},
-    {"id": '1646383005', 'column': 'alteracoes_custos_usuario_outro'},
     {"id": '1646383290', 'column': 'acoes_internet_outro'},
     {"id": '1646383340', 'column': 'adequabilidade_sistemas'},
     {"id": '1646383282', 'column': 'melhorias_servico_outro'},
