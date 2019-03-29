@@ -74,7 +74,8 @@ columns_multiple = [
             {"id": '241286625', 'sub_id': '1646382835', 'column': 'ad_divulga_servicos'},
             {"id": '241286625', 'sub_id': '1646382836', 'column': 'ad_melhoria_processos'},
             {"id": '241286630', 'sub_id': '1646382849', 'column': 'estrategia_divulgacao_efetiva'},
-            {"id": '241286632', 'sub_id': '1646382856', 'column': 'proatividade_divulgacao_informacoes'}
+            {"id": '241286632', 'sub_id': '1646382856', 'column': 'proatividade_divulgacao_informacoes'},
+            {"id": '000000000000000000000000000000000', 'sub_id': '1646382856', 'column': 'sistema_etapas'},
             ]
 
 columns_matrix = [
