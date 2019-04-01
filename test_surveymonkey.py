@@ -28,8 +28,8 @@
 #
 # print(response_json)
 # print(response_json)
-
-
+#
+#
 # import requests
 # import json
 #
@@ -53,11 +53,14 @@
 # #survey_list = response_json["data"]["surveys"]
 # print(response_json)
 # print(response_json)
+
+
 import csv
 
 from jsonpath_rw import jsonpath, parse
 from data import data_minfra, data_novo52
-from mapping_me import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other
+from mapping_me import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other, \
+    columns_nomes
 from questions import question_me52, question_minfra
 
 
@@ -147,13 +150,18 @@ def parse_answers(page, questions, ano):
     print('multiple')
     columns_multiple_copy = columns_multiple.copy()
     for c in columns_multiple_copy:
-        choice_subset = recursive_find(page, c['id'], 'id')['answers']
-        choice_id = recursive_find(choice_subset, c['sub_id'], 'row_id')
-        if choice_id:
-            choice_id = choice_id['choice_id']
-            choice = recursive_find(questions, choice_id, 'id')['text']
+        choice_subset = recursive_find(page, c['id'], 'id')
+        if choice_subset:
+            choice_subset = choice_subset['answers']
+            choice_id = recursive_find(choice_subset, c['sub_id'], 'row_id')
+            if choice_id:
+                choice_id = choice_id['choice_id']
+                choice = recursive_find(questions, choice_id, 'id')['text']
+            else:
+                choice = ''
         else:
             choice = ''
+
         c['answer'] = choice
         question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
         c['question'] = remove_html_tags(question)
@@ -169,7 +177,7 @@ def parse_answers(page, questions, ano):
             c['answer'] = choice['text']
             print('{0} - {1}: {2}'.format(count, c['column'], choice['text']))
         else:
-            c['answer'] = None
+            c['answer'] = ''
             print('{0} - {1}: {2}'.format(count, c['column'], choice))
 
         c['question'] = c['column']
@@ -178,20 +186,46 @@ def parse_answers(page, questions, ano):
     print('matrix')
     columns_matrix_copy = columns_matrix.copy()
     for c in columns_matrix_copy:
-        answers = recursive_find(page, c['id'], 'id')['answers']
-        choice_id = find_row_col(answers, c['row_id'], c['col_id'])
-        choice = recursive_find(questions, choice_id, 'id')
-        if choice and 'text' in choice:
-            c['answer'] = choice['text']
+        if c['id']:
+            answers = recursive_find(page, c['id'], 'id')
+            if answers:
+                answers = answers['answers']
+                choice_id = find_row_col(answers, c['row_id'], c['col_id'])
+                choice = recursive_find(questions, choice_id, 'id')
+                if choice and 'text' in choice:
+                    c['answer'] = choice['text']
+                else:
+                    c['answer'] = ''
+            else:
+                c['answer'] = ''
+            question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
+            c['question'] = remove_html_tags(question)
+            print('{0} - {1}: {2}'.format(count, c['column'], choice))
         else:
-            c['answer'] = None
-        question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
-        c['question'] = remove_html_tags(question)
+            c['answer'] = ''
 
-        print('{0} - {1}: {2}'.format(count, c['column'], choice))
         count = count + 1
 
-    result = columns_simple_copy + columns_categoric_copy + columns_multiple_copy + columns_other_copy + columns_matrix_copy
+    columns_nomes_copy = columns_nomes.copy()
+    if columns_nomes:
+        print('columns_nomes')
+        question_answers = recursive_find(page, columns_nomes_copy[0]['id'], 'id')['answers']
+        if 'row_id' in question_answers[0]:
+            question = remove_html_tags(recursive_find(questions, question_answers[0]['row_id'], 'id')['text'])
+            columns_nomes_copy[0]['question'] = question
+            columns_nomes_copy[1]['question'] = question
+            choice0 = recursive_find(questions, question_answers[0]['choice_id'], 'id')['text']
+            print('{0} - {1}: {2}'.format(count, columns_nomes_copy[0]['column'], choice0))
+            count = count + 1
+        if len(question_answers) > 1:
+            if 'choice_id' in question_answers[1]:
+                choice1 = recursive_find(questions, question_answers[1]['choice_id'], 'id')['text']
+                columns_nomes_copy[0]['answer'] = choice0
+                columns_nomes_copy[1]['answer'] = choice1
+                print('{0} - {1}: {2}'.format(count, columns_nomes_copy[1]['column'], choice1))
+                count = count + 1
+
+    result = columns_nomes_copy + columns_simple_copy + columns_categoric_copy + columns_multiple_copy + columns_other_copy + columns_matrix_copy
     values = [ano] + [d['answer'] for d in result]
     columns = ['ano'] + [d['column'] for d in result]
     questions_text = ['ano'] + [d['question'] for d in result]
@@ -217,15 +251,17 @@ def parse_answers(page, questions, ano):
 
 jsonpath_expr = parse('data[*].pages')
 question_expr = parse('pages[*].questions')
-questions = [match.value for match in question_expr.find(question_minfra)]
+questions = [match.value for match in question_expr.find(question_me52)]
 dataset = []
 first = True
 
-input = data_minfra
+input = data_novo52
 ano = input['data'][0]['date_modified'].split('-')[0]
 
-for match in jsonpath_expr.find(input):
-    page = match.value
+for da in input['data']:
+    page = da['pages']
+    if da['response_status'] == 'partial':
+        continue
     values, columns, questions_text = parse_answers(page, questions, ano)
     if first:
         first = False

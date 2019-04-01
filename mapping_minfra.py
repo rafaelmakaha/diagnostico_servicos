@@ -1,5 +1,5 @@
 
-columns_simple = [{"id": '220161939', 'column': 'qtd_servicos'}, ## OK
+columns_simple = [
                   {"id": '220161947', 'column': 'respondente_nome'}, ## OK
                   {"id": '224174967', 'column': 'respondente_email'}, ## OK
                   {"id": '224175004', 'column': 'respondente_telefone'}, ## OK
@@ -12,8 +12,6 @@ columns_simple = [{"id": '220161939', 'column': 'qtd_servicos'}, ## OK
                   {"id": '220161958', 'column': 'tempo_pessoas_implantacao'}] ## OK
 
 columns_categoric = [
-                    #{"id": '241301514', 'column': 'organizacao'},
-                    #{"id": '241286634', 'column': 'nome_servico'},
                     {"id": '220161945', 'column': 'tipo_usuario'}, ## OK
                     {"id": '220161961', 'column': 'forma_prestacao'}, ## OK
                     {"id": '220161915', 'column': 'sn_medicao_tempo_entrega'}, #OK
@@ -105,11 +103,10 @@ columns_matrix = [
     {'id': '220161954', "row_id": '1581480806', 'col_id': '1582860212', 'column': 'percentual_servidores_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480807', 'col_id': '1581480808', 'column': 'qtd_terceirizados_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480807', 'col_id': '1582860212', 'column': 'percentual_terceirizados_antes'}, ## OK
-
     {'id': '230931417', "row_id": '1581517691', 'col_id': '1581531845', 'column': 'qtd_servidores_depois'}, ## OK
     {'id': '230931417', "row_id": '1581517687', 'col_id': '1581531845', 'column': 'percentual_servidores_depois'}, ## OK
-    {'id': None, "row_id": '1664189140', 'col_id': '1664189141', 'column': 'qtd_terceirizados_depois'}, ##NONE
-    {'id': None, "row_id": '1664189140', 'col_id': '1664189231', 'column': 'percentual_terceirizados_depois'}, ##NONE
+    {'id': None, "row_id": '1664189140', 'col_id': '1664189141', 'column': 'qtd_terceirizados_depois', 'question': 'Após a transformação do serviço, estime quantos colaboradores se dedicariam a ofertar o serviço e qual seria o percentual médio de tempo dos colaboradores dedicados à oferta do serviço.'},
+    {'id': None, "row_id": '1664189140', 'col_id': '1664189231', 'column': 'percentual_terceirizados_depois', 'question': 'Após a transformação do serviço, estime quantos colaboradores se dedicariam a ofertar o serviço e qual seria o percentual médio de tempo dos colaboradores dedicados à oferta do serviço.'}, ##NONE
 
     ]
 
@@ -128,7 +125,9 @@ columns_other = [
                  ]
 #
 columns_nomes = [
-    {"id": '1646383625', 'column': 'nome_servico_outro', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'}]
+    {"id": '220161939', 'column': 'nome_servico_outro', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'},
+    {"id": '220161939', 'column': 'qtd_servicos', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1511959873'}
+]
 # columns_simple = [
 #                     {'question': 'Quantos serviços você coordena?', 'column': 'qtd_servicos', 'id': '241294964'},
 #                     {'question': 'Qual é o seu nome?', 'column': 'respondente_nome', 'id': '241286639'},

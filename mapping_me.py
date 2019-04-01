@@ -75,7 +75,9 @@ columns_multiple = [
             {"id": '241286625', 'sub_id': '1646382836', 'column': 'ad_melhoria_processos'},
             {"id": '241286630', 'sub_id': '1646382849', 'column': 'estrategia_divulgacao_efetiva'},
             {"id": '241286632', 'sub_id': '1646382856', 'column': 'proatividade_divulgacao_informacoes'},
-            {"id": '000000000000000000000000000000000', 'sub_id': '1646382856', 'column': 'sistema_etapas'},
+            {"id": '241286651', 'sub_id': '1646383478', 'column': 'sistema_etapas_solicitacao'},
+            {"id": '241286651', 'sub_id': '1646383479', 'column': 'sistema_etapas_analise'},
+            {"id": '241286651', 'sub_id': '1646383480', 'column': 'sistema_etapas_entrega'},
             ]
 
 columns_matrix = [
@@ -99,7 +101,6 @@ columns_matrix = [
     {'id': '241286646', "row_id": '1646383182', 'col_id': '1646383283', 'column': 'percentual_servidores_antes'},
     {'id': '241286646', "row_id": '1646383184', 'col_id': '1646383186', 'column': 'qtd_terceirizados_antes'},
     {'id': '241286646', "row_id": '1646383184', 'col_id': '1646383283', 'column': 'percentual_terceirizados_antes'},
-
     {'id': '244127646', "row_id": '1664189139', 'col_id': '1664189141', 'column': 'qtd_servidores_depois'},
     {'id': '244127646', "row_id": '1664189139', 'col_id': '1664189231', 'column': 'percentual_servidores_depois'},
     {'id': '244127646', "row_id": '1664189140', 'col_id': '1664189141', 'column': 'qtd_terceirizados_depois'},
@@ -120,6 +121,9 @@ columns_other = [
     {"id": '1646383282', 'column': 'melhorias_servico_outro'},
     {"id": '1646382988', 'column': 'colaboracao_instituicoes_outro'},
                  ]
+
+columns_nomes = []
+
 #
 # columns_simple = [
 #                     {'question': 'Quantos serviços você coordena?', 'column': 'qtd_servicos', 'id': '241294964'},
