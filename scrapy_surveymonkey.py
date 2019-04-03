@@ -57,9 +57,10 @@
 
 import csv
 
+import requests
 from jsonpath_rw import jsonpath, parse
 from data import data_minfra, data_novo52
-from mapping_me import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other, \
+from mapping_minfra import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other, \
     columns_nomes
 from questions import question_me52, question_minfra
 
@@ -75,6 +76,16 @@ def get_choices(l):
     choices = []
     for i in l:
         choices.append(i['choice_id'])
+
+
+def get_responses(url):
+    headers = {
+        "Authorization": "bearer %s" % "LBiQHvyhTbN3YqEM1ItHOhEpatfxh9QXkz6zsm2HSzeKLONgGF-WrEuWrXdf6T4YHlRjTiMjGnHZgnV1mQtLF2hEOdNtzTVW6xC9t7Qg8cpDF6ic7EroiVz-a4jsjb6e",
+        "Content-Type": "application/json"
+    }
+    client = requests.session()
+    response = client.get(url, headers=headers)
+    return response.json()
 
 
 def recursive_find(d, value, key):
@@ -210,20 +221,35 @@ def parse_answers(page, questions, ano):
     if columns_nomes:
         print('columns_nomes')
         question_answers = recursive_find(page, columns_nomes_copy[0]['id'], 'id')['answers']
-        if 'row_id' in question_answers[0]:
+        choice0_id = recursive_find(question_answers, columns_nomes_copy[0]['col_id'], 'col_id')
+        choice1_id = recursive_find(question_answers, columns_nomes_copy[1]['col_id'], 'col_id')
+
+        if choice0_id:
+            choice0 = recursive_find(questions, choice0_id['choice_id'], 'id')['text']
+        else:
+            choice0 = ''
+
+        if choice1_id:
+            choice1 = recursive_find(questions, choice1_id['choice_id'], 'id')['text']
+        else:
+            choice1 = ''
+
+        if choice0_id or choice1_id:
             question = remove_html_tags(recursive_find(questions, question_answers[0]['row_id'], 'id')['text'])
-            columns_nomes_copy[0]['question'] = question
-            columns_nomes_copy[1]['question'] = question
-            choice0 = recursive_find(questions, question_answers[0]['choice_id'], 'id')['text']
-            print('{0} - {1}: {2}'.format(count, columns_nomes_copy[0]['column'], choice0))
-            count = count + 1
-        if len(question_answers) > 1:
-            if 'choice_id' in question_answers[1]:
-                choice1 = recursive_find(questions, question_answers[1]['choice_id'], 'id')['text']
-                columns_nomes_copy[0]['answer'] = choice0
-                columns_nomes_copy[1]['answer'] = choice1
-                print('{0} - {1}: {2}'.format(count, columns_nomes_copy[1]['column'], choice1))
-                count = count + 1
+            columns_nomes_copy[0]['question'] = remove_html_tags(question)
+            columns_nomes_copy[1]['question'] = remove_html_tags(question)
+        else:
+            columns_nomes_copy[0]['question'] = ''
+            columns_nomes_copy[1]['question'] = ''
+
+        columns_nomes_copy[0]['answer'] = choice0
+        columns_nomes_copy[1]['answer'] = choice1
+
+        print('{0} - {1}: {2}'.format(count, columns_nomes_copy[0]['column'], choice0))
+        count = count + 1
+
+        print('{0} - {1}: {2}'.format(count, columns_nomes_copy[1]['column'], choice1))
+        count = count + 1
 
     result = columns_nomes_copy + columns_simple_copy + columns_categoric_copy + columns_multiple_copy + columns_other_copy + columns_matrix_copy
     values = [ano] + [d['answer'] for d in result]
@@ -251,24 +277,35 @@ def parse_answers(page, questions, ano):
 
 jsonpath_expr = parse('data[*].pages')
 question_expr = parse('pages[*].questions')
-questions = [match.value for match in question_expr.find(question_me52)]
+questions = [match.value for match in question_expr.find(question_minfra)]
 dataset = []
 first = True
 
-input = data_novo52
+input = data_minfra
 ano = input['data'][0]['date_modified'].split('-')[0]
+has_data = True
+while has_data:
+    for da in input['data']:
+        page = da['pages']
+        if da['response_status'] == 'partial':
+            continue
+        values, columns, questions_text = parse_answers(page, questions, ano)
 
-for da in input['data']:
-    page = da['pages']
-    if da['response_status'] == 'partial':
-        continue
-    values, columns, questions_text = parse_answers(page, questions, ano)
-    if first:
-        first = False
-        dataset.append(questions_text)
-        dataset.append(columns)
+        if first:
+            first = False
+            ids = list(range(1, len(values) + 1))
+            # dataset.append(questions_text)
+            # dataset.append(columns)
+            dataset.append(ids)
 
-    dataset.append(values)
+
+        dataset.append(values)
+
+    if 'next' in input['links']:
+        input = get_responses(input['links']['next'])
+    else:
+        has_data = False
+
 
 with open('./dataset.csv', 'w') as file:
     wr = csv.writer(file, quoting=csv.QUOTE_ALL)

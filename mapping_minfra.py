@@ -39,9 +39,6 @@ columns_multiple = [
             {"id": '241010906', 'sub_id': '1644586885', 'column': 'rat_buscainf_presencial_antes'}, ##OK
             {"id": '241010906', 'sub_id': '1644586886', 'column': 'rat_buscainf_digital_antes'}, ##OK
             {"id": '241010906', 'sub_id': '1644586889', 'column': 'rat_buscainf_telefone_antes'}, ##OK
-            {"id": '220161953', 'sub_id': '1511913458', 'column': 'rat_buscainf_presencial_depois'}, ## OK
-            {"id": '220161953', 'sub_id': '1511913457', 'column': 'rat_buscainf_digital_depois'}, ## OK
-            {"id": '220161953', 'sub_id': '1511913458', 'column': 'rat_buscainf_telefone_depois'}, ## OK
             {"id": '220161921', 'sub_id': '1511913176', 'column': 'cb_transf_conhecimento'}, ## OK
             {"id": '220161921', 'sub_id': '1511913177', 'column': 'cb_politica_capacitacao'}, ## OK
             {"id": '220161921', 'sub_id': '1511913178', 'column': 'cb_qtd_colab_adequado'}, ## OK
@@ -52,7 +49,6 @@ columns_multiple = [
             {"id": '220161950', 'sub_id': '1511913474', 'column': 'doc_necessarios_3'}, ## OK
             {"id": '220161950', 'sub_id': '1511913475', 'column': 'doc_necessarios_4'}, ## OK
             {"id": '220161950', 'sub_id': '1511913476', 'column': 'doc_necessarios_5'}, ## OK
-            {"id": '220161953', 'sub_id': '1511913459', 'column': 'red_docs_solicitados'}, ## OK
             {"id": '220161924', 'sub_id': '1511913187', 'column': 'inform_docs_necessarios'}, ## OK
             {"id": '220161924', 'sub_id': '1511913362', 'column': 'inform_etapas_necessarias'}, ## OK
             {"id": '220161924', 'sub_id': '1511913188', 'column': 'realizar_agendamento'}, ## OK
@@ -92,19 +88,26 @@ columns_matrix = [
     {"id": '220161959', 'row_id': '1581604328', 'col_id': '1581604378', 'column': 'rat_entrega_antes_postal'},## OK
     {"id": '220161959', 'row_id': '1581604329', 'col_id': '1581604378', 'column': 'rat_entrega_antes_telefone'},## OK
     {"id": '241002894', 'row_id': '1644533037', 'col_id': '1644533068', 'column': 'rat_entrega_depois_presencial'}, ## OK
-    {"id": '241002894', 'row_id': '1644533038', 'col_id': '1644533068', 'column': 'rat_entrega_depois_digital'}, ## OK
+    {"id": '220161953', 'row_id': '1511913710', 'col_id': '1581646209', 'column': 'rat_entrega_depois_digital'}, ## OK
+    # {"id": '241002894', 'row_id': '1644533038', 'col_id': '1644533068', 'column': 'rat_entrega_depois_digital'}, ## OK
     {"id": '241002894', 'row_id': '1644533040', 'col_id': '1644533068', 'column': 'rat_entrega_depois_postal'}, ## OK
     {"id": '241002894', 'row_id': '1644533041', 'col_id': '1644533068', 'column': 'rat_entrega_depois_telefone'}, ## OK
     {"id": '241002894', 'row_id': '1644533037', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_presencial'},## OK
-    {"id": '241002894', 'row_id': '1644533038', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_digital'}, ## OK
+    # {"id": '241002894', 'row_id': '1644533038', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_digital'}, ## OK
+    {"id": '220161953', 'row_id': '1511913709', 'col_id': '1581646209', 'column': 'rat_solicitacao_depois_digital'},
     {"id": '241002894', 'row_id': '1644533040', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_postal'}, ## OK
     {"id": '241002894', 'row_id': '1644533041', 'col_id': '1644533045', 'column': 'rat_solicitacao_depois_telefone'},## OK
+    {"id": '220161953', 'row_id': '1511913458', 'col_id': '1581646209', 'column': 'rat_buscainf_presencial_depois'},  ## OK
+    {"id": '220161953', 'row_id': '1511913457', 'col_id': '1581646209', 'column': 'rat_buscainf_digital_depois'},  ## OK
+    {"id": '220161953', 'row_id': '1511913458', 'col_id': '1581646209', 'column': 'rat_buscainf_telefone_depois'},  ## OK
+    {"id": '220161953', 'row_id': '1511913459', 'col_id': '1581646209', 'column': 'red_docs_solicitados'},  ## OK
     {'id': '220161954', "row_id": '1581480806', 'col_id': '1581480808', 'column': 'qtd_servidores_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480806', 'col_id': '1582860212', 'column': 'percentual_servidores_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480807', 'col_id': '1581480808', 'column': 'qtd_terceirizados_antes'}, ## OK
     {'id': '220161954', "row_id": '1581480807', 'col_id': '1582860212', 'column': 'percentual_terceirizados_antes'}, ## OK
     {'id': '230931417', "row_id": '1581517691', 'col_id': '1581531845', 'column': 'qtd_servidores_depois'}, ## OK
     {'id': '230931417', "row_id": '1581517687', 'col_id': '1581531845', 'column': 'percentual_servidores_depois'}, ## OK
+
     {'id': None, "row_id": '1664189140', 'col_id': '1664189141', 'column': 'qtd_terceirizados_depois', 'question': 'Após a transformação do serviço, estime quantos colaboradores se dedicariam a ofertar o serviço e qual seria o percentual médio de tempo dos colaboradores dedicados à oferta do serviço.'},
     {'id': None, "row_id": '1664189140', 'col_id': '1664189231', 'column': 'percentual_terceirizados_depois', 'question': 'Após a transformação do serviço, estime quantos colaboradores se dedicariam a ofertar o serviço e qual seria o percentual médio de tempo dos colaboradores dedicados à oferta do serviço.'}, ##NONE
 
@@ -125,8 +128,9 @@ columns_other = [
                  ]
 #
 columns_nomes = [
-    {"id": '220161939', 'column': 'nome_servico_outro', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'},
-    {"id": '220161939', 'column': 'qtd_servicos', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1511959873'}
+    {"id": '220161939', 'column': 'qtd_servicos', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1511959873'},
+    {"id": '220161939', 'column': 'nome_servico', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'},
+
 ]
 # columns_simple = [
 #                     {'question': 'Quantos serviços você coordena?', 'column': 'qtd_servicos', 'id': '241294964'},
