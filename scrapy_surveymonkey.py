@@ -295,8 +295,8 @@ while has_data:
             first = False
             ids = list(range(1, len(values) + 1))
             # dataset.append(questions_text)
-            # dataset.append(columns)
-            dataset.append(ids)
+            dataset.append(columns)
+            # dataset.append(ids)
 
 
         dataset.append(values)
