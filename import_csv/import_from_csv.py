@@ -11,7 +11,8 @@ if __name__ == "__main__":
     username = username 
     password = password
     survey_id = survey_id
-
+    q1 = q1
+    q2 = q2
     df = pd.read_csv('/path/to/file.csv')
     
     main = PyLimeRc(url)
@@ -22,8 +23,8 @@ if __name__ == "__main__":
         CA = row['organizacao']
         prov = row['nome_servico']
         data = {"startlanguage": "pt-BR", 
-                "958979X2X3": CA, 
-                "958979X2X4": prov, 
+                q1: CA, 
+                q2: prov, 
                 }        
         result = main.add_response(survey_id, data)
         print result 
