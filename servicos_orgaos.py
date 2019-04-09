@@ -55,7 +55,7 @@ def create_codes(orgaos, qid_orgao, qid_serv, language):
         cod_orgao = ''.join(co)
         orgaos_output['rows'].append({
             'qid': "<![CDATA[{0}]]>".format(qid_orgao),
-            'code': "<![CDATA[{0}]]>".format('{0}'.format(cod_orgao)),
+            'code': "<![CDATA[{0}]]>".format(orgaos[o][0]['orgao_nome']),
             'answer': "<![CDATA[{0}]]>".format(orgaos[o][0]['orgao_nome']),
             'sortorder': "<![CDATA[{0}]]>".format(count_orgao),
             'language': "<![CDATA[{0}]]>".format(language),
@@ -67,7 +67,7 @@ def create_codes(orgaos, qid_orgao, qid_serv, language):
         for (s, cs) in zip(orgaos[o], servico_generator):
             servicos_output['rows'].append({
                 'qid': "<![CDATA[{0}]]>".format(qid_serv),
-                'code': "<![CDATA[{0}]]>".format('{0}{1}'.format(cod_orgao, ''.join(cs))),
+                'code': "<![CDATA[{0}]]>".format(s['servico_nome']),
                 'answer': "<![CDATA[{0}]]>".format(s['servico_nome']),
                 'sortorder': "<![CDATA[{0}]]>".format(count_serv),
                 'language': "<![CDATA[{0}]]>".format(language),
