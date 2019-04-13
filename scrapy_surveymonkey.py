@@ -60,6 +60,8 @@ import csv
 import requests
 from jsonpath_rw import jsonpath, parse
 from data import data_minfra, data_novo52
+# from mapping_me import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other, \
+#     columns_nomes
 from mapping_minfra import columns_matrix, columns_simple, columns_categoric, columns_multiple, columns_other, \
     columns_nomes
 from questions import question_me52, question_minfra
@@ -235,15 +237,23 @@ def parse_answers(page, questions, ano):
             choice1 = ''
 
         if choice0_id or choice1_id:
-            question = remove_html_tags(recursive_find(questions, question_answers[0]['row_id'], 'id')['text'])
+            question = remove_html_tags(recursive_find(questions, columns_nomes_copy[0]['id'], 'id')['headings'][0]['heading'])
             columns_nomes_copy[0]['question'] = remove_html_tags(question)
             columns_nomes_copy[1]['question'] = remove_html_tags(question)
+            columns_nomes_copy[2]['question'] = remove_html_tags(question)
         else:
             columns_nomes_copy[0]['question'] = ''
             columns_nomes_copy[1]['question'] = ''
 
         columns_nomes_copy[0]['answer'] = choice0
         columns_nomes_copy[1]['answer'] = choice1
+
+        if 'row_id' in question_answers[0]:
+            organizacao = remove_html_tags(recursive_find(questions, question_answers[0]['row_id'], 'id')['text'])
+        else:
+            organizacao = None
+
+        columns_nomes_copy[2]['answer'] = organizacao
 
         print('{0} - {1}: {2}'.format(count, columns_nomes_copy[0]['column'], choice0))
         count = count + 1
@@ -295,8 +305,8 @@ while has_data:
             first = False
             ids = list(range(1, len(values) + 1))
             # dataset.append(questions_text)
-            # dataset.append(columns)
-            dataset.append(ids)
+            dataset.append(columns)
+            # dataset.append(ids)
 
 
         dataset.append(values)
