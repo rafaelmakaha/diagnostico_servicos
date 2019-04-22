@@ -136,9 +136,13 @@ def parse_answers(page, questions, ano):
                     choice = recursive_find(questions, i['choice_id'], 'id')['text']
                     choices.append(remove_html_tags(choice))
         else:
-            choices.append('')
+            choices = None
 
-        c['answer'] = ';'.join(choices)
+        if choices:
+            c['answer'] = ';'.join(choices)
+        else:
+            c['answer'] = None
+
         question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
         c['question'] = remove_html_tags(question)
 
@@ -152,7 +156,7 @@ def parse_answers(page, questions, ano):
         if choice:
             choice = choice['answers'][0]['text']
         else:
-            choice = ''
+            choice = None
         c['answer'] = choice
         question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
         c['question'] = remove_html_tags(question)
@@ -171,9 +175,9 @@ def parse_answers(page, questions, ano):
                 choice_id = choice_id['choice_id']
                 choice = recursive_find(questions, choice_id, 'id')['text']
             else:
-                choice = ''
+                choice = None
         else:
-            choice = ''
+            choice = None
 
         c['answer'] = choice
         question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
@@ -190,7 +194,7 @@ def parse_answers(page, questions, ano):
             c['answer'] = choice['text']
             print('{0} - {1}: {2}'.format(count, c['column'], choice['text']))
         else:
-            c['answer'] = ''
+            c['answer'] = None
             print('{0} - {1}: {2}'.format(count, c['column'], choice))
 
         c['question'] = c['column']
@@ -208,14 +212,14 @@ def parse_answers(page, questions, ano):
                 if choice and 'text' in choice:
                     c['answer'] = choice['text']
                 else:
-                    c['answer'] = ''
+                    c['answer'] = None
             else:
-                c['answer'] = ''
+                c['answer'] = None
             question = recursive_find(questions, c['id'], 'id')['headings'][0]['heading']
             c['question'] = remove_html_tags(question)
             print('{0} - {1}: {2}'.format(count, c['column'], choice))
         else:
-            c['answer'] = ''
+            c['answer'] = None
 
         count = count + 1
 
@@ -229,12 +233,13 @@ def parse_answers(page, questions, ano):
         if choice0_id:
             choice0 = recursive_find(questions, choice0_id['choice_id'], 'id')['text']
         else:
-            choice0 = ''
+            choice0 = None
 
         if choice1_id:
             choice1 = recursive_find(questions, choice1_id['choice_id'], 'id')['text']
         else:
-            choice1 = ''
+            choice1_id = recursive_find(question_answers, columns_nomes_copy[1]['other_id'], 'other_id')
+            choice1 = choice1_id['text']
 
         if choice0_id or choice1_id:
             question = remove_html_tags(recursive_find(questions, columns_nomes_copy[0]['id'], 'id')['headings'][0]['heading'])
@@ -242,8 +247,8 @@ def parse_answers(page, questions, ano):
             columns_nomes_copy[1]['question'] = remove_html_tags(question)
             columns_nomes_copy[2]['question'] = remove_html_tags(question)
         else:
-            columns_nomes_copy[0]['question'] = ''
-            columns_nomes_copy[1]['question'] = ''
+            columns_nomes_copy[0]['question'] = None
+            columns_nomes_copy[1]['question'] = None
 
         columns_nomes_copy[0]['answer'] = choice0
         columns_nomes_copy[1]['answer'] = choice1

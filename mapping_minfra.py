@@ -129,10 +129,10 @@ columns_other = [
 #
 columns_nomes = [
     {"id": '220161939', 'column': 'qtd_servicos', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1511959873'},
-    {"id": '220161939', 'column': 'nome_servico', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'},
-    {"id": None, 'column': 'organizacao'}
-
+    {"id": '220161939', 'column': 'nome_servico', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137', 'other_id': '1538043547'},
+    {"id": None, 'column': 'organizacao'},
 ]
+
 # columns_simple = [
 #                     {'question': 'Quantos serviços você coordena?', 'column': 'qtd_servicos', 'id': '241294964'},
 #                     {'question': 'Qual é o seu nome?', 'column': 'respondente_nome', 'id': '241286639'},
