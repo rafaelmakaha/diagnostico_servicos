@@ -305,7 +305,7 @@ while has_data:
         if da['response_status'] == 'partial':
             continue
         values, columns, questions_text = parse_answers(page, questions, ano)
-
+        columns = ['id_resposta'] + columns
         if first:
             first = False
             ids = list(range(1, len(values) + 1))
@@ -313,7 +313,7 @@ while has_data:
             dataset.append(columns)
             # dataset.append(ids)
 
-
+        values = [da['id']] + values
         dataset.append(values)
 
     if 'next' in input['links']:
