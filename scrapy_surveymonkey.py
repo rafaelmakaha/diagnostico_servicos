@@ -326,7 +326,7 @@ while has_data:
         has_data = False
 
 
-with open('./dataset.csv', 'w') as file:
+with open('./dataset_minfra.csv', 'w') as file:
     wr = csv.writer(file, quoting=csv.QUOTE_ALL)
     wr.writerows(dataset)
 
