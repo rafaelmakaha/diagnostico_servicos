@@ -239,7 +239,11 @@ def parse_answers(page, questions, ano):
             choice1 = recursive_find(questions, choice1_id['choice_id'], 'id')['text']
         else:
             choice1_id = recursive_find(question_answers, columns_nomes_copy[1]['other_id'], 'other_id')
-            choice1 = choice1_id['text']
+            if choice1_id:
+                choice1 = choice1_id['text']
+            else:
+                print(choice1_id)
+                choice1 = None
 
         if choice0_id or choice1_id:
             question = remove_html_tags(recursive_find(questions, columns_nomes_copy[0]['id'], 'id')['headings'][0]['heading'])
