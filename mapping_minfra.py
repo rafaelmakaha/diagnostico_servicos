@@ -36,9 +36,6 @@ columns_categoric = [
                     {"id": '220161936', 'column': 'sn_colaboracao_instituicoes'}] 
 
 columns_multiple = [
-            {"id": '241010906', 'sub_id': '1644586885', 'column': 'rat_buscainf_presencial_antes'}, 
-            {"id": '241010906', 'sub_id': '1644586886', 'column': 'rat_buscainf_digital_antes'}, 
-            {"id": '241010906', 'sub_id': '1644586889', 'column': 'rat_buscainf_telefone_antes'}, 
             {"id": '220161921', 'sub_id': '1511913176', 'column': 'cb_transf_conhecimento'}, 
             {"id": '220161921', 'sub_id': '1511913177', 'column': 'cb_politica_capacitacao'}, 
             {"id": '220161921', 'sub_id': '1511913178', 'column': 'cb_qtd_colab_adequado'}, 
@@ -79,6 +76,9 @@ columns_multiple = [
             ]
 
 columns_matrix = [
+    {"id": '241010906', 'row_id': '1644586885', 'col_id': '1644586893', 'column': 'rat_buscainf_presencial_antes'},
+    {"id": '241010906', 'row_id': '1644586886', 'col_id': '1644586893', 'column': 'rat_buscainf_digital_antes'},
+    {"id": '241010906', 'row_id': '1644586889', 'col_id': '1644586893', 'column': 'rat_buscainf_telefone_antes'},
     {"id": '220161959', 'row_id': '1511913706', 'col_id': '1581604351', 'column': 'rat_solicitacao_antes_presencial'}, 
     {"id": '220161959', 'row_id': '1511913707', 'col_id': '1581604351', 'column': 'rat_solicitacao_antes_digital'}, 
     {"id": '220161959', 'row_id': '1581604328', 'col_id': '1581604351', 'column': 'rat_solicitacao_antes_postal'}, 
@@ -129,10 +129,10 @@ columns_other = [
 #
 columns_nomes = [
     {"id": '220161939', 'column': 'qtd_servicos', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1511959873'},
-    {"id": '220161939', 'column': 'nome_servico', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137'},
-    {"id": None, 'column': 'organizacao'}
-
+    {"id": '220161939', 'column': 'nome_servico', "rows":['1511913271','1511913274','1511913275','1511913630','1511913463'], 'col_id':'1524947137', 'other_id': '1538043547'},
+    {"id": None, 'column': 'organizacao'},
 ]
+
 # columns_simple = [
 #                     {'question': 'Quantos serviços você coordena?', 'column': 'qtd_servicos', 'id': '241294964'},
 #                     {'question': 'Qual é o seu nome?', 'column': 'respondente_nome', 'id': '241286639'},

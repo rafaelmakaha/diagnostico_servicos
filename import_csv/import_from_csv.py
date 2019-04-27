@@ -190,4 +190,4 @@ if __name__ == "__main__":
                 survey_id + "X16X240P052A": row['proatividade_divulgacao_informacoes'], 
         }        
         result = main.add_response(sid, data)
-        print result
+        print(result)

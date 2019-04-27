@@ -53,10 +53,10 @@ class PyLimeRc:
         import requests
         import sys
 
-        print "Method: %s" % method
-        print "Params before: %s" % params
+        print("Method: %s" % method)
+        print("Params before: %s" % params)
         params = self.__sort_params(method,params)
-        print "Params sorted: %s" % params
+        print("Params sorted: %s" % params)
 
         payload = {"method":method,"params":params,"id":1}
         try:
@@ -127,7 +127,7 @@ class PyLimeRc:
         """
         params = self.__format_params(locals().copy())
         method = "get_survey_properties"
-        print params
+        print(params)
         r = self.call_rpc(method,params)
         return r.json()['result']
 
